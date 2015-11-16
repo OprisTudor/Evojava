@@ -14,22 +14,34 @@ public class EndUserVacationSteps extends ScenarioSteps {
 
     @Step
     public void enters(String name, String password) {
-    	loginPage.enter_credentials(name, password);
-    }
-
-    
-    @Step
-    public void should_see_definition(String definition) {
-        assertThat(loginPage.getDefinitions(), hasItem(containsString(definition)));
+    	loginPage.enterCredentials(name, password);
     }
 
     @Step
-    public void is_the_home_page() {
+    public void clickSignIn(){
+    	loginPage.signIn();
+    }
+   
+    @Step
+    public void isTheHomePage() {
     	loginPage.open();
     }
+    
+    @Step
+    public void clickSubmit() {
+    	loginPage.logIn();
+    }
+    
+    @Step
+    public void enterVacationTab() {
+    	loginPage.clickVacationTab();
+    }
 
     @Step
-    public void looks_for(String name, String password) {
+    public void effectuateLogin(String name, String password) {
+    	clickSignIn();
     	enters(name, password);
+    	clickSubmit();
+    	enterVacationTab();
     }
 }

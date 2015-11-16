@@ -25,16 +25,20 @@ public class LoginPage extends PageObject {
     @FindBy(id="_58_password")
     private WebElementFacade passwordInput;
     
-    @FindBy(jquery=":submit")
+    @FindBy(css="input[type='submit']")
     private WebElementFacade logInButton;
     
+    @FindBy(xpath="/html/body/div[4]/div[1]/nav/ul/li[9]/a/span")
+    private WebElementFacade vacationTab;
+   
     
     
-    public void logIn() {
-    	logInButton.click();
+        
+    public void clickVacationTab() {
+    	vacationTab.click();
     }
 
-    public void enter_credentials(String name, String password) {
+    public void enterCredentials(String name, String password) {
         nameInput.type(name);
         passwordInput.type(password);
     }
@@ -42,6 +46,10 @@ public class LoginPage extends PageObject {
     public void signIn() {
         signIn.click();
     }
+    public void logIn() {
+    	logInButton.click();
+    }
+    
     public List<String> getDefinitions() {
         WebElementFacade definitionList = find(By.tagName("ol"));
         List<WebElement> results = definitionList.findElements(By.tagName("li"));
