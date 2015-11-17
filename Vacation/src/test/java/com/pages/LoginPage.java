@@ -1,6 +1,7 @@
 package com.pages;
 
 import ch.lambdaj.function.convert.Converter;
+import helpers.Constants;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static ch.lambdaj.Lambda.convert;
 
-@DefaultUrl("http://172.22.4.88:9090/")
+@DefaultUrl(Constants.BASE_URL)
 public class LoginPage extends PageObject {
 
     @FindBy(id = "sign-in")
