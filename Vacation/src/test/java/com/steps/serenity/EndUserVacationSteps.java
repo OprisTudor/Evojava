@@ -1,6 +1,8 @@
 package com.steps.serenity;
 
 import com.pages.LoginPage;
+
+import helpers.Constants;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -13,34 +15,52 @@ public class EndUserVacationSteps extends ScenarioSteps {
     LoginPage loginPage;
 
     @Step
-    public void enters(String name, String password) {
+    private void enters(String name, String password) {
     	loginPage.enterCredentials(name, password);
     }
 
     @Step
-    public void clickSignIn(){
+    private void clickSignIn(){
     	loginPage.signIn();
     }
    
     @Step
-    public void isTheHomePage() {
+    private void isTheHomePage() {
     	loginPage.open();
     }
     
     @Step
-    public void clickSubmit() {
+    private void clickSubmit() {
     	loginPage.logIn();
     }
     
     @Step
-    public void enterVacationTab() {
+    private void enterVacationTab() {
     	loginPage.clickVacationTab();
-    }
-
+    }    
     @Step
-    public void effectuateLogin(String name, String password) {
+    public void loginAsUser() {
+    	isTheHomePage();
     	clickSignIn();
-    	enters(name, password);
+    	enters(Constants.USER_NAME, Constants.USER_PASSWORD);
+    	clickSubmit();
+    	enterVacationTab();
+    }
+    
+    @Step
+    public void loginAsPM() {
+    	isTheHomePage();
+    	clickSignIn();
+    	enters(Constants.PM_USERNAME, Constants.PM_PASSWORD);
+    	clickSubmit();
+    	enterVacationTab();
+    }
+    
+    @Step
+    public void loginAsDM() {
+    	isTheHomePage();
+    	clickSignIn();
+    	enters(Constants.DM_USERNAME, Constants.DM_PASSWORD);
     	clickSubmit();
     	enterVacationTab();
     }
