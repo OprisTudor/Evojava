@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 
-public class EndUserVacationSteps extends ScenarioSteps {
+public class LoginAndEnterOnTheVacationTabSteps extends ScenarioSteps {
 
     LoginPage loginPage;
 

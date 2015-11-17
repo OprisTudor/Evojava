@@ -11,4 +11,6 @@ public final class Constants {
 	public static final String DM_USERNAME = "angela.baciu1";
 	public static final String DM_PASSWORD = "test";
 	
+	public static final String BASE_URL="http://172.22.4.88:9090/";
+	
 }
