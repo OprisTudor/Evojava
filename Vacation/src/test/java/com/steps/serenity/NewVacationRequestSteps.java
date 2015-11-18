@@ -28,8 +28,10 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void selectVacationWithoutPayment() {
+	public void selectVacationWithoutPayment(String vacationReason, String institutionName ) {
 		newVacationRequestPage.selectCFButton();
+		newVacationRequestPage.inputDuration(vacationReason);
+		newVacationRequestPage.inputInstitution(institutionName);
 	}
 	
 	@Step
@@ -38,8 +40,9 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectVacationSpecial() {
-		newVacationRequestPage.selectCSButton();
+	public void selectVacationSpecial(String optionVacation) {
+		newVacationRequestPage.clickCSButton();
+		newVacationRequestPage.selectVisibleText(optionVacation);
 	}
 	
 	@Step

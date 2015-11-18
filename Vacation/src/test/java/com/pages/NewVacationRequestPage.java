@@ -27,10 +27,10 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_type_CF")
 	private WebElementFacade requestCF;
 
-	@FindBy(id = "")
+	@FindBy(css = "input[name='duration']")
 	private WebElementFacade durationInput;
 
-	@FindBy(id = "")
+	@FindBy(css = "input[name='institution']")
 	private WebElementFacade institutionInput;
 	
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_type_CM")
@@ -38,6 +38,9 @@ public class NewVacationRequestPage extends PageObject {
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_type_CS")
 	private WebElementFacade requestCS;
+	
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_specialReason")
+	private WebElementFacade dropdownList;
 	
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_type_ML")
 	private WebElementFacade requestML;
@@ -72,14 +75,28 @@ public class NewVacationRequestPage extends PageObject {
 		requestCF.click();
 	}
 	
+	public void inputDuration(String vacationReason) {
+		durationInput.sendKeys(vacationReason);
+	}
+	
+	public void inputInstitution(String institutionName) {
+		institutionInput.sendKeys(institutionName);
+	}
+	
+	
 	public void selectCMButton() {
 		requestCM.click();
 	}
 	
-	public void selectCSButton() {
+	public void clickCSButton() {
 		requestCS.click();
+		
 	}
 	
+	public void selectVisibleText(String optionVacation) {
+		dropdownList.selectByValue(optionVacation);
+		
+	}
 	public void selectMLButton() {
 		requestML.click();
 	}
