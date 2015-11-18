@@ -28,10 +28,10 @@ public class MyRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void verifyThatTypeIsCorrect(String type) {
+	public void verifyThatTypeIsCorrect(String terms) {
 		// myRequestPage.verifyThatTypeIsCorrect(type);
 		for (int i = 0; i < myRequestPage.getNumberOfPages(); i++) {
-			myRequestPage.verifyThatTypeIsCorrect(type);
+			myRequestPage.verifyThatTypeIsCorrect(terms);
 			goToNextPage();
 			// myRequestPage.verifyThatTypeIsCorrect(type);
 		}
@@ -44,7 +44,7 @@ public class MyRequestSteps extends ScenarioSteps {
 
 	@Step
 	public void checkThatRowContainsTerms(String... terms) {
-		myRequestPage.checkThatRowContainsTerms(terms);
+		myRequestPage.checkThatASingleRowContainsAllTerms(terms);
 	}
 
 	@Step

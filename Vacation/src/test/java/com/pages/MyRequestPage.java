@@ -61,18 +61,6 @@ public class MyRequestPage extends PageObject {
 		nextPage.click();
 	}
 
-	/*
-	 * public List<String> getFilterData() { List<WebElement> results =
-	 * getDriver().findElements(By.cssSelector("table tbody tr td:nth-child(4)"
-	 * )); return convert(results, toStrings()); }
-	 * 
-	 * private Converter<WebElement, String> toStrings() { return new
-	 * Converter<WebElement, String>() { public String convert(WebElement from)
-	 * { return from.getText(); } };
-	 * 
-	 * }
-	 */
-
 	public void verifyThatTypeIsCorrect(String type) {
 		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr td:nth-child(4) a"));
 		for (WebElement row : rows) {
@@ -92,12 +80,11 @@ public class MyRequestPage extends PageObject {
 		return pages;
 	}
 
-	public void checkThatRowContainsTerms(String... terms) {
+	public void checkThatASingleRowContainsAllTerms(String... terms) {
 
 		boolean found = false;
 
 		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr"));
-		System.out.println(rows.size());
 		rows = rows.subList(2, rows.size());
 		System.out.println(rows.size());
 		firstFor: for (WebElement row : rows) {
