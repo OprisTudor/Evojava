@@ -24,19 +24,19 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 
 	@Step
 	public void selectVacationHoliday() {
-		newVacationRequestPage.selectCOButton();
+		newVacationRequestPage.clickCOButton();
 	}
 
 	@Step
 	public void selectVacationWithoutPayment(String vacationReason, String institutionName ) {
-		newVacationRequestPage.selectCFButton();
+		newVacationRequestPage.clickCFButton();
 		newVacationRequestPage.inputDuration(vacationReason);
 		newVacationRequestPage.inputInstitution(institutionName);
 	}
 	
 	@Step
 	public void selectVacationSickLeave() {
-		newVacationRequestPage.selectCMButton();
+		newVacationRequestPage.clickCFButton();
 	}
 	
 	@Step
@@ -46,18 +46,21 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectVacationMaternityLeave() {
-		newVacationRequestPage.selectMLButton();
+	public void selectVacationMaternityLeave(String optionMaternity, String vacationReason, String institutionName) {
+		newVacationRequestPage.clickMLButton();
+		newVacationRequestPage.selectVisibleTextMaternity(optionMaternity);
+		newVacationRequestPage.inputDuration(vacationReason);
+		newVacationRequestPage.inputInstitution(institutionName);
 	}
 	
 	@Step
 	public void chooseComment() {
-		newVacationRequestPage.selectComment();
+		newVacationRequestPage.clickComment();
 	}
 	
 	@Step
-	public void writeComment(String comm) {
-		newVacationRequestPage.inputComment(comm);
+	public void writeComment(String generalComment) {
+		newVacationRequestPage.inputComment(generalComment);
 	}
 
 	@Step
@@ -65,6 +68,18 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		newVacationRequestPage.submitRequest();
 	}
 
+	@Step
+	public void clickBack() {
+		newVacationRequestPage.clickBackButton();
+	}
 	
+	@Step
+	public void clickCancel() {
+		newVacationRequestPage.clickCancelButton();
+	}
 	
+	@Step
+	public void verifyMessage(String message) {
+		newVacationRequestPage.verifyMessage(message);
+	}
 }
