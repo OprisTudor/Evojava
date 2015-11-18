@@ -45,6 +45,9 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_type_ML")
 	private WebElementFacade requestML;
 	
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_maternityLeave")
+	private WebElementFacade dropListMaternity;
+	
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_newVacationComment")
 	private WebElementFacade addComment;
 	
@@ -67,11 +70,11 @@ public class NewVacationRequestPage extends PageObject {
 		element(secondDate).sendKeys(date);
 	}
 
-	public void selectCOButton() {
+	public void clickCOButton() {
 		requestCO.click();
 	}
 
-	public void selectCFButton() {
+	public void clickCFButton() {
 		requestCF.click();
 	}
 	
@@ -84,7 +87,7 @@ public class NewVacationRequestPage extends PageObject {
 	}
 	
 	
-	public void selectCMButton() {
+	public void clickCMButton() {
 		requestCM.click();
 	}
 	
@@ -97,11 +100,16 @@ public class NewVacationRequestPage extends PageObject {
 		dropdownList.selectByValue(optionVacation);
 		
 	}
-	public void selectMLButton() {
+	
+	public void clickMLButton() {
 		requestML.click();
 	}
 	
-	public void selectComment() {
+	public void selectVisibleTextMaternity(String optionMaternity) {
+		dropListMaternity.selectByValue(optionMaternity);
+		
+	}
+	public void clickComment() {
 		addComment.click();
 	}
 	

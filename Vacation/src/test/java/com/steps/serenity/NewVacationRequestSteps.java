@@ -24,19 +24,19 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 
 	@Step
 	public void selectVacationHoliday() {
-		newVacationRequestPage.selectCOButton();
+		newVacationRequestPage.clickCOButton();
 	}
 
 	@Step
 	public void selectVacationWithoutPayment(String vacationReason, String institutionName ) {
-		newVacationRequestPage.selectCFButton();
+		newVacationRequestPage.clickCFButton();
 		newVacationRequestPage.inputDuration(vacationReason);
 		newVacationRequestPage.inputInstitution(institutionName);
 	}
 	
 	@Step
 	public void selectVacationSickLeave() {
-		newVacationRequestPage.selectCMButton();
+		newVacationRequestPage.clickCFButton();
 	}
 	
 	@Step
@@ -46,13 +46,14 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectVacationMaternityLeave() {
-		newVacationRequestPage.selectMLButton();
+	public void selectVacationMaternityLeave(String optionMaternity) {
+		newVacationRequestPage.clickMLButton();
+		newVacationRequestPage.selectVisibleTextMaternity(optionMaternity);
 	}
 	
 	@Step
 	public void chooseComment() {
-		newVacationRequestPage.selectComment();
+		newVacationRequestPage.clickComment();
 	}
 	
 	@Step
