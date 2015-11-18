@@ -46,9 +46,11 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectVacationMaternityLeave(String optionMaternity) {
+	public void selectVacationMaternityLeave(String optionMaternity, String vacationReason, String institutionName) {
 		newVacationRequestPage.clickMLButton();
 		newVacationRequestPage.selectVisibleTextMaternity(optionMaternity);
+		newVacationRequestPage.inputDuration(vacationReason);
+		newVacationRequestPage.inputInstitution(institutionName);
 	}
 	
 	@Step
@@ -57,8 +59,8 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void writeComment(String comm) {
-		newVacationRequestPage.inputComment(comm);
+	public void writeComment(String generalComment) {
+		newVacationRequestPage.inputComment(generalComment);
 	}
 
 	@Step
@@ -66,6 +68,13 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 		newVacationRequestPage.submitRequest();
 	}
 
+	@Step
+	public void clickBack() {
+		newVacationRequestPage.clickBackButton();
+	}
 	
-	
+	@Step
+	public void clickCancel() {
+		newVacationRequestPage.clickCancelButton();
+	}
 }

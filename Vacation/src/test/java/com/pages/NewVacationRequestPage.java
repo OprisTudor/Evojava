@@ -57,9 +57,11 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "input[type='submit']")
 	private WebElementFacade submitButton;
 
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_TabsBack")
+	private WebElementFacade backButton;
 
-
-	
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_cancelButton")
+	private WebElementFacade cancelButton;
 	
 
 
@@ -113,13 +115,19 @@ public class NewVacationRequestPage extends PageObject {
 		addComment.click();
 	}
 	
-	public void inputComment(String comm) {
-		commentInput.type(comm);
+	public void inputComment(String generalComment) {
+		commentInput.type(generalComment);
 	}
 
 	public void submitRequest() {
 		submitButton.click();
 	}
 
+	public void clickBackButton() {
+		backButton.click();
+	}
 	
+	public void clickCancelButton() {
+		cancelButton.click();
+	}
 }
