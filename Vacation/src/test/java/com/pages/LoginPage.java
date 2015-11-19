@@ -43,10 +43,7 @@ public class LoginPage extends PageObject {
     	vacationTab.click();
     }
 
-    public void maximize() {
-    	driver.manage().window().maximize();
-    }
-    
+      
     public void enterCredentials(String name, String password) {
         nameInput.type(name);
         passwordInput.type(password);
