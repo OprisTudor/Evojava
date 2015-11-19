@@ -32,9 +32,9 @@ public class NewVacationRequestTest {
 		authentication.loginAsUser();
 		sideMenuSteps.enterNewRequest();
 		newVacationRequestSteps.selectStartDate();
-		newVacationRequestSteps.setDate(12,"January",2016);
+		newVacationRequestSteps.setDate(12,"Jan",2016);
 		newVacationRequestSteps.selectEndDate();
-		newVacationRequestSteps.setDate(17,"January",2016);
+		newVacationRequestSteps.setDate(17,"Jan",2016);
 		newVacationRequestSteps.selectVacationMaternityLeave("CIC", "4 months", "Kindergarden");
 		newVacationRequestSteps.chooseComment();
 		newVacationRequestSteps.writeComment("Please check my request ASAP");
