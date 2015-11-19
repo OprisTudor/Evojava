@@ -98,6 +98,8 @@ public class NewVacationRequestPage extends PageObject {
 				i.click();
 				break;
 			}
+		
+		waitABit(5000);
 
 	}
 

@@ -6,7 +6,9 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import net.thucydides.core.pages.PageObject;
 
@@ -16,6 +18,8 @@ import static ch.lambdaj.Lambda.convert;
 
 @DefaultUrl(Constants.BASE_URL)
 public class LoginPage extends PageObject {
+	
+	WebDriver driver = new FirefoxDriver();
 
     @FindBy(id = "sign-in")
     private WebElementFacade signIn;
@@ -39,6 +43,7 @@ public class LoginPage extends PageObject {
     	vacationTab.click();
     }
 
+      
     public void enterCredentials(String name, String password) {
         nameInput.type(name);
         passwordInput.type(password);
