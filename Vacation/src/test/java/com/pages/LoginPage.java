@@ -35,8 +35,9 @@ public class LoginPage extends PageObject {
     @FindBy(css = "a[href*='vacation']")
     private WebElementFacade vacationTab;
    
-    
-    
+    public void maximizeWindow(){
+    	getDriver().manage().window().maximize();
+    }
         
     public void clickVacationTab() {
     	vacationTab.click();
