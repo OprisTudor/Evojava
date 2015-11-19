@@ -13,7 +13,7 @@ import java.util.List;
 
 import static ch.lambdaj.Lambda.convert;
 
-@DefaultUrl("http://172.22.4.88:9090/")
+
 public class TrackPage extends PageObject {
 
 	@FindBy(css = "a[href*='menuItem=vacation-tracker']")

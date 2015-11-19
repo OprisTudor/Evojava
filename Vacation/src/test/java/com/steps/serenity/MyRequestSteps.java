@@ -29,12 +29,12 @@ public class MyRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void verifyThatTypeIsCorrect(String type) {
-		// myRequestPage.verifyThatTypeIsCorrect(type);
-		for (int i = 0; i < myRequestPage.getNumberOfPages(); i++) {
-			myRequestPage.verifyThatTypeIsCorrect(type);
+	public void verifyThatTypeIsCorrect(String terms, String column) {
+		myRequestPage.verifyThatTypeIsCorrect(terms, column);
+		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
+			//myRequestPage.verifyThatTypeIsCorrect(terms);
 			goToNextPage();
-			// myRequestPage.verifyThatTypeIsCorrect(type);
+			myRequestPage.verifyThatTypeIsCorrect(terms, column);
 		}
 	}
 
@@ -44,9 +44,11 @@ public class MyRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
+
 	public List<VacationResultModel> checkThatRowContainsTerms() {
 //		myRequestPage.checkThatRowContainsTerms(terms);
 		return myRequestPage.grabResultsModelList();
+
 	}
 
 	@Step

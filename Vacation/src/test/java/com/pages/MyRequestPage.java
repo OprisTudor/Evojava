@@ -67,22 +67,11 @@ public class MyRequestPage extends PageObject {
 		nextPage.click();
 	}
 
-	/*
-	 * public List<String> getFilterData() { List<WebElement> results =
-	 * getDriver().findElements(By.cssSelector("table tbody tr td:nth-child(4)"
-	 * )); return convert(results, toStrings()); }
-	 * 
-	 * private Converter<WebElement, String> toStrings() { return new
-	 * Converter<WebElement, String>() { public String convert(WebElement from)
-	 * { return from.getText(); } };
-	 * 
-	 * }
-	 */
-
-	public void verifyThatTypeIsCorrect(String type) {
-		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr td:nth-child(4) a"));
+	public void verifyThatTypeIsCorrect(String type, String column) {
+		String css ="table tbody tr td[class*='" + type +"'] a";
+		List<WebElement> rows = getDriver().findElements(By.cssSelector(css));
 		for (WebElement row : rows) {
-			Assert.assertTrue("The row does not contains the expected type", row.getText().contentEquals(type));
+			Assert.assertTrue("The row does not contains the expected type", row.getText().contentEquals(column));
 		}
 	}
 
@@ -98,31 +87,8 @@ public class MyRequestPage extends PageObject {
 		return pages;
 	}
 
-//	public void checkThatRowContainsTerms(String... terms) {
-//
-//		boolean found = false;
-//
-//		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr"));
-//		System.out.println(rows.size());
-//		rows = rows.subList(2, rows.size());
-//		System.out.println(rows.size());
-//		firstFor: for (WebElement row : rows) {
-//			System.out.println(row.getText());
-//			boolean containsAllTerms = true;
-//			theSecondFor: for (String term : terms) {
-//				if (!row.getText().contains(term)) {
-//					containsAllTerms = false;
-//					break theSecondFor;
-//				}
-//			}
-//			if (containsAllTerms) {
-//				found = true;
-//				break firstFor;
-//			}
-//		}
-//
-//		Assert.assertTrue("The row does not contain all the terms !!!", found);
-//	}
+
+
 	
 	public List<VacationResultModel> grabResultsModelList(){
 		element(searchListContainer).waitUntilVisible();
@@ -152,6 +118,7 @@ public class MyRequestPage extends PageObject {
 			
 			
 			resultList.add(entryNow);
+
 		}
 		
 		return resultList;
