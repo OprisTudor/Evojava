@@ -13,6 +13,11 @@ import static org.hamcrest.Matchers.hasItem;
 public class LoginAndEnterOnTheVacationTabSteps extends ScenarioSteps {
 
     LoginPage loginPage;
+    
+    @Step
+    private void maximize(){
+    	loginPage.maximize();
+    }
 
     @Step
     private void enters(String name, String password) {
@@ -44,6 +49,7 @@ public class LoginAndEnterOnTheVacationTabSteps extends ScenarioSteps {
     	clickSignIn();
     	enters(Constants.USER_NAME, Constants.USER_PASSWORD);
     	clickSubmit();
+    	maximize();
     	enterVacationTab();
     }
     

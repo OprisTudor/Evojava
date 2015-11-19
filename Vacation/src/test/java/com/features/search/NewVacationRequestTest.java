@@ -18,6 +18,7 @@ public class NewVacationRequestTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 	
+	
 	@Steps
 	public LoginAndEnterOnTheVacationTabSteps authentication;
 	
@@ -32,9 +33,9 @@ public class NewVacationRequestTest {
 		authentication.loginAsUser();
 		sideMenuSteps.enterNewRequest();
 		newVacationRequestSteps.selectStartDate();
-		newVacationRequestSteps.setDate(12,"Jan",2016);
+		newVacationRequestSteps.setDate(15,"Oct",2018);
 		newVacationRequestSteps.selectEndDate();
-		newVacationRequestSteps.setDate(17,"Jan",2016);
+		newVacationRequestSteps.setDate(26,"Oct",2018);
 		newVacationRequestSteps.selectVacationMaternityLeave("CIC", "4 months", "Kindergarden");
 		newVacationRequestSteps.chooseComment();
 		newVacationRequestSteps.writeComment("Please check my request ASAP");
