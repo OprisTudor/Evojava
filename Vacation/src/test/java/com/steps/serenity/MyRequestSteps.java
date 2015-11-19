@@ -3,6 +3,7 @@ package com.steps.serenity;
 import com.pages.LoginPage;
 import static org.junit.Assert.*;
 import com.pages.MyRequestPage;
+import com.tools.VacationResultModel;
 
 import helpers.Constants;
 import net.thucydides.core.annotations.Step;
@@ -43,8 +44,9 @@ public class MyRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void checkThatRowContainsTerms(String... terms) {
-		myRequestPage.checkThatRowContainsTerms(terms);
+	public List<VacationResultModel> checkThatRowContainsTerms() {
+//		myRequestPage.checkThatRowContainsTerms(terms);
+		return myRequestPage.grabResultsModelList();
 	}
 
 	@Step

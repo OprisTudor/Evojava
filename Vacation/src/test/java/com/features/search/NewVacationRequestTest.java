@@ -33,14 +33,14 @@ public class NewVacationRequestTest {
 		authentication.loginAsUser();
 		sideMenuSteps.enterNewRequest();
 		newVacationRequestSteps.selectStartDate();
-		newVacationRequestSteps.setDate(15,"Oct",2018);
+		newVacationRequestSteps.setDate(7,"Aug",2017);
 		newVacationRequestSteps.selectEndDate();
-		newVacationRequestSteps.setDate(26,"Oct",2018);
+		newVacationRequestSteps.setDate(25,"Aug",2017);
 		newVacationRequestSteps.selectVacationMaternityLeave("CIC", "4 months", "Kindergarden");
 		newVacationRequestSteps.chooseComment();
 		newVacationRequestSteps.writeComment("Please check my request ASAP");
 		newVacationRequestSteps.finishRequest();
 		newVacationRequestSteps.verifyMessage("Your request completed successfully.");
-		
+		sideMenuSteps.enterMyRequest();
 	}
 } 

@@ -1,7 +1,6 @@
 package com.steps.serenity;
 
 import com.pages.MyFreeDaysPage;
-import com.pages.ViewVacationsPage;
 
 import net.thucydides.core.annotations.Step;
 

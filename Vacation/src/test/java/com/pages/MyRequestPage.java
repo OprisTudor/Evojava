@@ -2,11 +2,14 @@ package com.pages;
 
 import static ch.lambdaj.Lambda.convert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import com.tools.VacationResultModel;
 
 import ch.lambdaj.function.convert.Converter;
 import helpers.Constants;
@@ -44,6 +47,9 @@ public class MyRequestPage extends PageObject {
 
 	@FindBy(css = ".aui-paginator-next-link")
 	private WebElementFacade nextPage;
+	
+	@FindBy(css = ".aui-searchcontainer")
+	private WebElement searchListContainer;
 
 	public void inputHoliday() {
 		holiday.click();
@@ -92,30 +98,63 @@ public class MyRequestPage extends PageObject {
 		return pages;
 	}
 
-	public void checkThatRowContainsTerms(String... terms) {
-
-		boolean found = false;
-
-		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr"));
-		System.out.println(rows.size());
-		rows = rows.subList(2, rows.size());
-		System.out.println(rows.size());
-		firstFor: for (WebElement row : rows) {
-			System.out.println(row.getText());
-			boolean containsAllTerms = true;
-			theSecondFor: for (String term : terms) {
-				if (!row.getText().contains(term)) {
-					containsAllTerms = false;
-					break theSecondFor;
-				}
-			}
-			if (containsAllTerms) {
-				found = true;
-				break firstFor;
-			}
+//	public void checkThatRowContainsTerms(String... terms) {
+//
+//		boolean found = false;
+//
+//		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr"));
+//		System.out.println(rows.size());
+//		rows = rows.subList(2, rows.size());
+//		System.out.println(rows.size());
+//		firstFor: for (WebElement row : rows) {
+//			System.out.println(row.getText());
+//			boolean containsAllTerms = true;
+//			theSecondFor: for (String term : terms) {
+//				if (!row.getText().contains(term)) {
+//					containsAllTerms = false;
+//					break theSecondFor;
+//				}
+//			}
+//			if (containsAllTerms) {
+//				found = true;
+//				break firstFor;
+//			}
+//		}
+//
+//		Assert.assertTrue("The row does not contain all the terms !!!", found);
+//	}
+	
+	public List<VacationResultModel> grabResultsModelList(){
+		element(searchListContainer).waitUntilVisible();
+		List<WebElement> entryList = searchListContainer.findElements(By.cssSelector("tr.results-row:not(.lfr-template)"));
+		
+		List<VacationResultModel> resultList =new ArrayList<VacationResultModel>();
+		
+		for (WebElement webElement : entryList) {
+			VacationResultModel entryNow = new VacationResultModel();
+			
+			System.out.println("Display Row: " + webElement.getText());
+			///logic
+			
+			String startDate = webElement.findElement(By.cssSelector("td[class*='start.date']")).getText();
+			String endDate = webElement.findElement(By.cssSelector("td[class*='end.date']")).getText();
+			String daysNumber = webElement.findElement(By.cssSelector("td[class*='day.number']")).getText();
+			String type = webElement.findElement(By.cssSelector("td[class*='type']")).getText();
+			String lastUpdated = webElement.findElement(By.cssSelector("td[class*='last.update']")).getText();
+			String status = webElement.findElement(By.cssSelector("td[class*='status']")).getText();
+			
+			entryNow.setStartDate(startDate);
+			entryNow.setEndDate(endDate);
+			entryNow.setDaysNumber(daysNumber);
+			entryNow.setType(type);
+			entryNow.setLastUpdated(lastUpdated);
+			entryNow.setStatus(status);
+			
+			
+			resultList.add(entryNow);
 		}
-
-		Assert.assertTrue("The row does not contain all the terms !!!", found);
+		
+		return resultList;
 	}
 
 }

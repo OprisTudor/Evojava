@@ -1,0 +1,55 @@
+package com.features.search;
+
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
+
+import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
+import com.steps.serenity.MyRequestSteps;
+import com.tools.VacationResultModel;
+import com.tools.VerifyNewRequestInRequests;
+
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
+
+@RunWith(SerenityRunner.class)
+public class SplitterTest {
+    
+	@Managed(uniqueSession = true)
+	public WebDriver webdriver;
+	
+	
+	@Steps
+	public LoginAndEnterOnTheVacationTabSteps authentication;
+	
+	@Steps
+	public MyRequestSteps myRequestsSteps;
+	
+	@Steps
+	public VerifyNewRequestInRequests verifyNewRequestInRequests;
+	
+	public VacationResultModel expectedData;
+	
+	@Before
+	public void setData(){
+		expectedData = new VacationResultModel();
+		expectedData.setEndDate("11/11/2015");
+		expectedData.setStartDate("11/11/2015");
+		expectedData.setDaysNumber("1");
+		expectedData.setLastUpdated("Tudor Opris");
+		expectedData.setStatus("Withdrawn");
+		expectedData.setType("Holiday");
+		
+	}
+	
+	@Test
+	public void enterNewVacationRequest() {
+		authentication.loginAsUser();
+		List<VacationResultModel> grabbedList = myRequestsSteps.checkThatRowContainsTerms();
+		verifyNewRequestInRequests.verifyListContainsEntry(grabbedList, expectedData);
+	}
+} 

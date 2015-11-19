@@ -99,7 +99,7 @@ public class NewVacationRequestPage extends PageObject {
 				break;
 			}
 		
-		waitABit(5000);
+		waitABit(3000);
 
 	}
 
