@@ -31,34 +31,33 @@ public class TrackPage extends PageObject {
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_departmentsALLCheckbox")
 	private WebElementFacade checkAllDepartments;
 
-	@FindBy(css = "_evovacation_WAR_EvoVacationportlet_buildingsALLCheckbox")
+	@FindBy(css = "#buildings div.mutliSelect ul li")
 	private WebElementFacade checkAllBuildings;
 
+//	@FindBy(css = "#departments dl dt div.hida")
+//	private WebElementFacade departmentsDropDown;
 
-	@FindBy(css = "#departments dl dt div.hida")
-	private WebElementFacade departmentsDropDown;
-
-	@FindBy(id = "aui_3_4_0_1_451")
-	private WebElementFacade showBuildings;
-
-	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_buildingsALLCheckbox")
-	private WebElementFacade checkAll;
-	
-	@FindBy(id= "_evovacation_WAR_EvoVacationportlet_applyButton")
+	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_applyButton")
 	private WebElementFacade applyButton;
-	
-	@FindBy (id="#_evovacation_WAR_EvoVacationportlet_Main BuildingCheckbox")
+
+	@FindBy(id = "#_evovacation_WAR_EvoVacationportlet_Main BuildingCheckbox")
 	private WebElementFacade mainBuildingCheckbox;
 	
+	@FindBy (css="div#departments div.hida")
+	private WebElementFacade departmentsDropdown;
 	
+	@FindBy (css="div#departments input[value='ALL']")
+	private WebElementFacade departmentAllValue;
 
+	@FindBy (css="div#departments div.mutliSelect")
+	private WebElementFacade departmentContainer;
+	
+	@FindBy(css="div#buildings div.mutliSelect")
+	private WebElementFacade buildingContainer;
+	
 	public void clickOnTrack() {
 		track.click();
-    
-	}
 
-	public void clickDropDownAll() {
-		checkAll.click();
 	}
 
 	public void clickOnInitialDate() {
@@ -70,15 +69,16 @@ public class TrackPage extends PageObject {
 	}
 
 	public void clickCheckAllBuildings() {
-		checkAllBuildings.click();
+		checkAllBuildings.selectByVisibleText("ALL");
 	}
 
 	public void clickOnBuildingsDropDown() {
 		buildingsDropDown.click();
+		buildingsDropDown.selectByValue("ALL");
 	}
 
 	public void clickOnDepartmentsDropDown() {
-		departmentsDropDown.click();
+		departmentsDropdown.click();
 
 	}
 
@@ -86,13 +86,44 @@ public class TrackPage extends PageObject {
 		checkAllDepartments.click();
 
 	}
-	public void clickOnApplyButton(){
+
+	public void clickOnApplyButton() {
 		applyButton.click();
 	}
-	public void  buildingsDropDown(String name){
-		buildingsDropDown.type(name);
+	
+	public void selectFromDepartmentsDropDown(String departmentName){
+		element(departmentsDropdown).waitUntilVisible();
+		departmentsDropdown.click();
+		departmentsDropdown.click();
+		
+		List<WebElement> departmentsList = departmentContainer.findElements(By.cssSelector("label"));
+		for(WebElement departmentElement:departmentsList ){
+//			System.out.println("el: " +departmentElement.getText());
+			if(departmentElement.getText().contains(departmentName)){
+				departmentElement.click();
+				waitABit(3000);
+				break;
+			}
+		}
+		
 	}
+
+    public void selectFromBuildingsDropDown(String buildingName){
+    	element(buildingsDropDown).waitUntilVisible();
+    	buildingsDropDown.click();
+    	buildingsDropDown.click();
+    	
+    	List<WebElement> buildingsList =  buildingContainer.findElements(By.cssSelector("label"));
+		for(WebElement buildingElement:buildingsList ){
+//			System.out.println("el: " +buildingElement.getText());
+			if(buildingElement.getText().contains(buildingName)){
+				buildingElement.click();
+				waitABit(4000);
+				break;
+    	 
+			}
+    	
+    }
 }
-
-
+}
 

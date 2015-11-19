@@ -19,11 +19,6 @@ public class TrackSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void showDropDownAll() {
-		trackPage.clickDropDownAll();
-	}
-
-	@Step
 	public void selectInitialDate() {
 		trackPage.clickOnInitialDate();
 	}
@@ -46,20 +41,26 @@ public class TrackSteps extends ScenarioSteps {
 	@Step
 	public void checkAllBuildings() {
 		trackPage.clickCheckAllBuildings();
-		}
+	}
+
 	@Step
 	public void checkAllDepartments() {
 		trackPage.clickCheckAllDepartments();
 	}
-	
+
 	@Step
-	public void clickOnApplyButton(){
+	public void clickOnApplyButton() {
 		trackPage.clickOnApplyButton();
+	}
 	
-	}
 	@Step
-	public void clickOnBuildingsDropDown(String name){
-		trackPage.clickOnBuildingsDropDown();
+	public void selectFromDepartmentsDropDown(String departmentName){
+		trackPage.selectFromDepartmentsDropDown(departmentName);
 	}
+    
+	@Step
+	public void selectFromBuildingsDropDown(String buildingName){
+		trackPage.selectFromBuildingsDropDown(buildingName);
+}
 }
 
