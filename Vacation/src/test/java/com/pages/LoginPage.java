@@ -19,8 +19,7 @@ import static ch.lambdaj.Lambda.convert;
 @DefaultUrl(Constants.BASE_URL)
 public class LoginPage extends PageObject {
 	
-	WebDriver driver = new FirefoxDriver();
-
+	
     @FindBy(id = "sign-in")
     private WebElementFacade signIn;
     
