@@ -55,6 +55,16 @@ public class LoginAndEnterOnTheVacationTabSteps extends ScenarioSteps {
     }
     
     @Step
+    public void login(String userName, String userPassword) {
+    	isTheHomePage();
+    	clickSignIn();
+    	enters(userName,userPassword);
+    	clickSubmit();
+    	maximizeWindow();
+    	enterVacationTab();
+    }
+    
+    @Step
     public void loginAsPM() {
     	isTheHomePage();
     	clickSignIn();

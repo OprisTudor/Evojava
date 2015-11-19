@@ -30,7 +30,7 @@ public class NewVacationRequestTest {
 	
 	@Test
 	public void enterNewVacationRequest() {
-		authentication.loginAsUser();
+		authentication.login("roxanabot1","automation");
 		sideMenuSteps.enterNewRequest();
 		newVacationRequestSteps.selectStartDate();
 		newVacationRequestSteps.setDate(7,"Aug",2017);

@@ -37,18 +37,18 @@ public class SplitterTest {
 	@Before
 	public void setData(){
 		expectedData = new VacationResultModel();
-		expectedData.setEndDate("11/11/2015");
-		expectedData.setStartDate("11/11/2015");
+		expectedData.setEndDate("18/11/2015");
+		expectedData.setStartDate("18/11/2015");
 		expectedData.setDaysNumber("1");
-		expectedData.setLastUpdated("Tudor Opris");
+		expectedData.setLastUpdated("Roxana Bot");
 		expectedData.setStatus("Withdrawn");
-		expectedData.setType("Holiday");
+		expectedData.setType("Maternity");
 		
 	}
 	
 	@Test
 	public void enterNewVacationRequest() {
-		authentication.loginAsUser();
+		authentication.login("roxanabot1","automation");
 		List<VacationResultModel> grabbedList = myRequestsSteps.checkThatRowContainsTerms();
 		verifyNewRequestInRequests.verifyListContainsEntry(grabbedList, expectedData);
 	}
