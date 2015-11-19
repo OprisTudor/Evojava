@@ -15,14 +15,17 @@ public class MyFreeDaysPage extends PageObject {
 
 	@FindBy(css = "ul[class='nav nav-tabs'] li")
 	private List<WebElementFacade> years;
+	//TODO use a more descriptive name for the list
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_TabsBack")
 	private WebElementFacade back;
+	//TODO use a more descriptive name for the element
 
 	public void clickOnMyFreeDays() {
 		myFreeDays.click();
 	}
 
+	//TODO clean syso
 	public void clickOnYears(String name) {
 		for (WebElementFacade item : years) {
 			if (item.getText().contains(name)) {

@@ -20,14 +20,13 @@ public class TrackTest {
 
 	@Steps
 	public LoginAndEnterOnTheVacationTabSteps endUserVacationSteps;
-
 	@Steps
 	public SideMenuSteps sideMenuSteps;
-
 	@Steps
 	public TrackSteps trackSteps;
 
 	@Test
+	// TODO change test name to a more meaningful test name
 	public void verifiyIfThetrackPageWorks() {
 		endUserVacationSteps.loginAsPM();
 		sideMenuSteps.enterVacatioTracker();

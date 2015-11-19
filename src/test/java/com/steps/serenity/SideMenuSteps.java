@@ -12,44 +12,48 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 
 public class SideMenuSteps extends ScenarioSteps {
+	
+	//TODO use access modifiers
 	SideMenuPage sideMenuPage;
-	
-	
+
 	@Step
 	public void enterInbox() {
 		sideMenuPage.clickOnInbox();
 	}
-	  
-	  @Step
+
+	@Step
 	public void enterNewRequest() {
 		sideMenuPage.clickOnNewRequest();
 	}
-	  @Step
+
+	@Step
 	public void enterMyRequest() {
 		sideMenuPage.clickOnMyRequest();
 	}
-	 @Step
+
+	@Step
 	public void enterMyFreeDays() {
 		sideMenuPage.clickOnMyFreeDays();
 	}
-	  @Step
+
+	@Step
 	public void enterFreeDaysHistory() {
 		sideMenuPage.clickOnFreeDaysHistory();
 	}
-	  @Step
+
+	@Step
 	public void enterVacatioTracker() {
 		sideMenuPage.clickOnVacationTracker();
 	}
-	  @Step
+
+	@Step
 	public void enterViewVacations() {
 		sideMenuPage.clickOnViewVacations();
 	}
-	  @Step
+
+	@Step
 	public void enterVacationReport() {
 		sideMenuPage.clickOnVacationReport();
 	}
-	
-	
-	
-	
+
 }

@@ -18,17 +18,16 @@ public class NewVacationRequestTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 	
-	
 	@Steps
 	public LoginAndEnterOnTheVacationTabSteps authentication;
-	
+	//TODO use full names. Also use key words like Steps for each
 	@Steps
 	public SideMenuSteps sideMenuSteps;
-	
 	@Steps
 	public NewVacationRequestSteps newVacationRequestSteps;
 	
 	@Test
+	//TODO change to meaningful test name
 	public void enterNewVacationRequest() {
 		authentication.login("roxanabot1","automation");
 		sideMenuSteps.enterNewRequest();

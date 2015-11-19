@@ -10,6 +10,7 @@ import net.thucydides.core.pages.PageObject;
 @DefaultUrl("http://172.22.4.88:9090/")
 public class ViewVacantionsPage extends PageObject {
 
+	//TODO use more suggestive names for element mappings
 	@FindBy(css = "a[href*='_menuItem=view-vacations']")
 	private WebElementFacade viewVacations;
 
@@ -78,7 +79,6 @@ public class ViewVacantionsPage extends PageObject {
 
 	public void enterOnFirstName(String name) {
 		firstName.type(name);
-
 	}
 
 	public void clickOnApply() {

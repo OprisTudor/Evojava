@@ -17,7 +17,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 @RunWith(SerenityRunner.class)
 public class MyFreeDaysTest extends ScenarioSteps {
-
+	// TODO the test class does not extend ScenarioSteps. remove unused extends
+	
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
@@ -26,17 +27,19 @@ public class MyFreeDaysTest extends ScenarioSteps {
 	@Steps
 	public InboxSteps inboxSteps;
 
+	//TODO add access modifiers to all members
 	@Steps
 	MyFreeDaysSteps myFreeDaysSteps;
-
 	@Steps
 	public SideMenuSteps sideMenuSteps;
 
 	@Test
+	//TODO change to meaningful test name
 	public void enterEveryTabOnSidePage() {
 		endUserSteps.loginAsDM();
 		sideMenuSteps.enterMyFreeDays();
 		myFreeDaysSteps.clickOnYears("2016");
+		//TODO remove waitABit - use waitUntilVisible for methods that need wait
 		waitABit(3000);
 		myFreeDaysSteps.clickOnBack();
 		waitABit(3000);

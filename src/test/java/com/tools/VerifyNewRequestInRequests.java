@@ -7,6 +7,7 @@ import org.junit.Assert;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+//TODO rename to a more appropriate name
 public class VerifyNewRequestInRequests extends ScenarioSteps{
 
 	@Step
@@ -21,6 +22,7 @@ public class VerifyNewRequestInRequests extends ScenarioSteps{
 			boolean vallidType = vacationResultModel.getType().contains(expectedData.getType());
 			boolean vallidStatus = vacationResultModel.getStatus().contains(expectedData.getStatus());
 			boolean vallidLastUpdated = vacationResultModel.getLastUpdated().contains(expectedData.getLastUpdated());
+			//TODO remove syso from final method
 			System.out.println("--- New Entry ------");
 			System.out.println("vallidEndDate: " + vallidEndDate);
 			System.out.println("vallidStartDate: " + vallidStartDate);

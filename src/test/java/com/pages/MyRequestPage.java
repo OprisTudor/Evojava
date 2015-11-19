@@ -1,9 +1,14 @@
 package com.pages;
 
-import static ch.lambdaj.Lambda.convert;
+import helpers.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.DefaultUrl;
+import net.thucydides.core.pages.PageObject;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -11,16 +16,10 @@ import org.openqa.selenium.WebElement;
 
 import com.tools.VacationResultModel;
 
-import ch.lambdaj.function.convert.Converter;
-import helpers.Constants;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.pages.PageObject;
-
 @DefaultUrl(Constants.BASE_URL)
 public class MyRequestPage extends PageObject {
 
+	//TODO remove unused mappings
 	@FindBy(css = "input[value='ALL']")
 	private WebElementFacade all;
 
@@ -98,9 +97,6 @@ public class MyRequestPage extends PageObject {
 		
 		for (WebElement webElement : entryList) {
 			VacationResultModel entryNow = new VacationResultModel();
-			
-			System.out.println("Display Row: " + webElement.getText());
-			///logic
 			
 			String startDate = webElement.findElement(By.cssSelector("td[class*='start.date']")).getText();
 			String endDate = webElement.findElement(By.cssSelector("td[class*='end.date']")).getText();

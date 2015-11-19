@@ -5,6 +5,7 @@ import com.pages.ViewVacantionsPage;
 import net.thucydides.core.annotations.Step;
 
 public class ViewVacantionsSteps {
+	//TODO use access modifiers
 	ViewVacantionsPage viewVacationsPage;
 
 	@Step
@@ -36,7 +37,7 @@ public class ViewVacantionsSteps {
 	public void enterFirstName(String name) {
 		viewVacationsPage.enterOnFirstName(name);
 	}
-	
+
 	@Step
 	public void clickOnApply() {
 		viewVacationsPage.clickOnApply();

@@ -4,7 +4,9 @@ import com.pages.MyFreeDaysPage;
 
 import net.thucydides.core.annotations.Step;
 
+//TODO class should extend scenarioSteps
 public class MyFreeDaysSteps {
+	//TODO use access modifiers
 	MyFreeDaysPage myFreeDaysPage;
 
 	@Step

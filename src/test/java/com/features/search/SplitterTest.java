@@ -22,13 +22,11 @@ public class SplitterTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 	
-	
 	@Steps
 	public LoginAndEnterOnTheVacationTabSteps authentication;
-	
+	//TODO use full names for variables. Also use keywords like "Steps"
 	@Steps
 	public MyRequestSteps myRequestsSteps;
-	
 	@Steps
 	public VerifyNewRequestInRequests verifyNewRequestInRequests;
 	
@@ -43,7 +41,6 @@ public class SplitterTest {
 		expectedData.setLastUpdated("Roxana Bot");
 		expectedData.setStatus("Withdrawn");
 		expectedData.setType("Maternity");
-		
 	}
 	
 	@Test

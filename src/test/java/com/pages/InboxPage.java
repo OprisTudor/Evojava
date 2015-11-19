@@ -10,6 +10,7 @@ public class InboxPage extends PageObject {
 
 	@FindBy(css = "a[href*='_menuItem=inbox']")
 	private WebElementFacade inbox;
+	//TODO remove unused mappings
 
 	@FindBy(css = "table.taglib-search-iterator tr:nth-child(3) input")
 	private WebElementFacade firstRow;

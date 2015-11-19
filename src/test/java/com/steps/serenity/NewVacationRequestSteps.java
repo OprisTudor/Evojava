@@ -8,13 +8,12 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class NewVacationRequestSteps extends ScenarioSteps {
 
 	private static final long serialVersionUID = 1L;
-
+	//TODO use access modifiers
 	NewVacationRequestPage newVacationRequestPage;
 
 	@Step
 	public void selectStartDate() {
 		newVacationRequestPage.selectStartDate();
-		;
 	}
 
 	@Step

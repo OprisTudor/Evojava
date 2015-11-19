@@ -1,22 +1,21 @@
 package com.steps.serenity;
 
-import com.pages.LoginPage;
-import static org.junit.Assert.*;
-import com.pages.MyRequestPage;
-import com.tools.VacationResultModel;
+import java.util.List;
 
-import helpers.Constants;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasItem;
-
-import java.util.List;
+import com.pages.MyRequestPage;
+import com.tools.VacationResultModel;
 
 public class MyRequestSteps extends ScenarioSteps {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5882515009397365249L;
+	
+	//TODO use access modifiers
 	MyRequestPage myRequestPage;
 
 	@Step
@@ -32,7 +31,7 @@ public class MyRequestSteps extends ScenarioSteps {
 	public void verifyThatTypeIsCorrect(String terms, String column) {
 		myRequestPage.verifyThatTypeIsCorrect(terms, column);
 		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
-			//myRequestPage.verifyThatTypeIsCorrect(terms);
+			// myRequestPage.verifyThatTypeIsCorrect(terms);
 			goToNextPage();
 			myRequestPage.verifyThatTypeIsCorrect(terms, column);
 		}
@@ -44,9 +43,9 @@ public class MyRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-
+	//TODO use correct verb for action 'check =/= grab'
 	public List<VacationResultModel> checkThatRowContainsTerms() {
-//		myRequestPage.checkThatRowContainsTerms(terms);
+		// myRequestPage.checkThatRowContainsTerms(terms);
 		return myRequestPage.grabResultsModelList();
 
 	}

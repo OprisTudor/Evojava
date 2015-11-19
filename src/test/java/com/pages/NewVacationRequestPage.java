@@ -9,6 +9,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 
 public class NewVacationRequestPage extends PageObject {
+	
+	//TODO remove unused mappings
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_startDate")
 	private WebElementFacade initialDate;
@@ -73,6 +75,7 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "[style*='display: block'] .dp_daypicker td:not([class*='disabled'])")
 	private List<WebElementFacade> dayList;
 
+	//TODO split this method into more atomic methods (one for each field)
 	public void setDate(int day, String month, int year) {
 		// click twice on title to open year view
 		title.click();
@@ -103,6 +106,7 @@ public class NewVacationRequestPage extends PageObject {
 
 	}
 
+	//TODO add waitUntilVisible for all element actions (methods)
 	public void selectStartDate() {
 		initialDate.click();
 	}
