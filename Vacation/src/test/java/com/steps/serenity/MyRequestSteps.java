@@ -28,12 +28,12 @@ public class MyRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void verifyThatTypeIsCorrect(String terms) {
-		// myRequestPage.verifyThatTypeIsCorrect(type);
-		for (int i = 0; i < myRequestPage.getNumberOfPages(); i++) {
-			myRequestPage.verifyThatTypeIsCorrect(terms);
+	public void verifyThatTypeIsCorrect(String terms, String column) {
+		myRequestPage.verifyThatTypeIsCorrect(terms, column);
+		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
+			//myRequestPage.verifyThatTypeIsCorrect(terms);
 			goToNextPage();
-			// myRequestPage.verifyThatTypeIsCorrect(type);
+			myRequestPage.verifyThatTypeIsCorrect(terms, column);
 		}
 	}
 

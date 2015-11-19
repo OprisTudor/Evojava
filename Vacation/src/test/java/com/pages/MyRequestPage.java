@@ -61,10 +61,11 @@ public class MyRequestPage extends PageObject {
 		nextPage.click();
 	}
 
-	public void verifyThatTypeIsCorrect(String type) {
-		List<WebElement> rows = getDriver().findElements(By.cssSelector("table tbody tr td:nth-child(4) a"));
+	public void verifyThatTypeIsCorrect(String type, String column) {
+		String css ="table tbody tr td[class*='" + type +"'] a";
+		List<WebElement> rows = getDriver().findElements(By.cssSelector(css));
 		for (WebElement row : rows) {
-			Assert.assertTrue("The row does not contains the expected type", row.getText().contentEquals(type));
+			Assert.assertTrue("The row does not contains the expected type", row.getText().contentEquals(column));
 		}
 	}
 
