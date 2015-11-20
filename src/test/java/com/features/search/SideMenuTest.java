@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
 import com.steps.serenity.SideMenuSteps;
 
+import helpers.Constants;
+
 @RunWith(SerenityRunner.class)
 public class SideMenuTest extends ScenarioSteps{
 	//TODO the test class does not extend ScenarioSteps. remove unused extends
@@ -26,7 +28,7 @@ public class SideMenuTest extends ScenarioSteps{
     @Test
     //TODO change to meaningful test name
     public void enterEveryTabOnSidePage() {
-       endUserSteps.loginAsDM();
+    	endUserSteps.login(Constants.DM_USERNAME, Constants.DM_PASSWORD);
        sideMenuSteps.enterInbox();
        sideMenuSteps.enterNewRequest();
        sideMenuSteps.enterMyRequest();

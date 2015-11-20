@@ -46,7 +46,7 @@ public class SplitterTest {
 	@Test
 	public void enterNewVacationRequest() {
 		authentication.login("roxanabot1","automation");
-		List<VacationResultModel> grabbedList = myRequestsSteps.checkThatRowContainsTerms();
+		List<VacationResultModel> grabbedList = myRequestsSteps.verifyThatRowContainsTerms();
 		verifyNewRequestInRequests.verifyListContainsEntry(grabbedList, expectedData);
 	}
 } 

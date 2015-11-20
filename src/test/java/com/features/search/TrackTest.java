@@ -8,6 +8,7 @@ import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
 import com.steps.serenity.SideMenuSteps;
 import com.steps.serenity.TrackSteps;
 
+import helpers.Constants;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -28,7 +29,7 @@ public class TrackTest {
 	@Test
 	// TODO change test name to a more meaningful test name
 	public void verifiyIfThetrackPageWorks() {
-		endUserVacationSteps.loginAsPM();
+		endUserVacationSteps.login(Constants.PM_USERNAME, Constants.PM_PASSWORD);
 		sideMenuSteps.enterVacatioTracker();
 		// trackSteps.selectInitialDate();
 		// trackSteps.selectSecondDate();
