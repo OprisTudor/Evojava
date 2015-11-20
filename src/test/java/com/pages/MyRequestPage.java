@@ -19,7 +19,7 @@ import com.tools.VacationResultModel;
 @DefaultUrl(Constants.BASE_URL)
 public class MyRequestPage extends PageObject {
 
-	//TODO remove unused mappings
+	// TODO remove unused mappings
 	@FindBy(css = "input[value='ALL']")
 	private WebElementFacade all;
 
@@ -46,9 +46,9 @@ public class MyRequestPage extends PageObject {
 
 	@FindBy(css = ".aui-paginator-next-link")
 	private WebElementFacade nextPage;
-	
-	@FindBy(css = ".aui-searchcontainer")
-	private WebElement searchListContainer;
+
+	// @FindBy(css = ".aui-searchcontainer")
+	// private WebElement searchListContainer;
 
 	public void inputHoliday() {
 		holiday.click();
@@ -67,7 +67,7 @@ public class MyRequestPage extends PageObject {
 	}
 
 	public void verifyThatTypeIsCorrect(String type, String column) {
-		String css ="table tbody tr td[class*='" + type +"'] a";
+		String css = "table tbody tr td[class*='" + type + "'] a";
 		List<WebElement> rows = getDriver().findElements(By.cssSelector(css));
 		for (WebElement row : rows) {
 			Assert.assertTrue("The row does not contains the expected type", row.getText().contentEquals(column));
@@ -86,37 +86,40 @@ public class MyRequestPage extends PageObject {
 		return pages;
 	}
 
-
-
-	
-	public List<VacationResultModel> grabResultsModelList(){
+	public List<VacationResultModel> grabResultsModelList() {
+		WebElement searchListContainer = getDriver().findElement(By.cssSelector("div.results-grid"));
 		element(searchListContainer).waitUntilVisible();
-		List<WebElement> entryList = searchListContainer.findElements(By.cssSelector("tr.results-row:not(.lfr-template)"));
-		
-		List<VacationResultModel> resultList =new ArrayList<VacationResultModel>();
-		
+		List<WebElement> entryList = searchListContainer
+				.findElements(By.cssSelector("tr.results-row:not(.lfr-template)"));
+
+		List<VacationResultModel> resultList = new ArrayList<VacationResultModel>();
+
 		for (WebElement webElement : entryList) {
 			VacationResultModel entryNow = new VacationResultModel();
 			
 			String startDate = webElement.findElement(By.cssSelector("td[class*='start.date']")).getText();
+
 			String endDate = webElement.findElement(By.cssSelector("td[class*='end.date']")).getText();
+
 			String daysNumber = webElement.findElement(By.cssSelector("td[class*='day.number']")).getText();
+
 			String type = webElement.findElement(By.cssSelector("td[class*='type']")).getText();
+
 			String lastUpdated = webElement.findElement(By.cssSelector("td[class*='last.update']")).getText();
+
 			String status = webElement.findElement(By.cssSelector("td[class*='status']")).getText();
-			
+
 			entryNow.setStartDate(startDate);
 			entryNow.setEndDate(endDate);
 			entryNow.setDaysNumber(daysNumber);
 			entryNow.setType(type);
 			entryNow.setLastUpdated(lastUpdated);
 			entryNow.setStatus(status);
-			
-			
+
 			resultList.add(entryNow);
 
 		}
-		
+
 		return resultList;
 	}
 

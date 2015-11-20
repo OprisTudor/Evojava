@@ -24,11 +24,6 @@ public class LoginPage extends PageObject {
 	@FindBy(css = "a[href*='vacation']")
 	private WebElementFacade vacationTab;
 
-	//TODO move general method to a more general class
-//	public void maximizeWindow() {
-//		getDriver().manage().window().maximize();
-//	}
-
 	public void enterCredentialsInInputFields(String name, String password) {
 		
 		nameInput.type(name);

@@ -1,5 +1,6 @@
 package com.features.search.tudorAwesomeTests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -13,6 +14,7 @@ import com.steps.serenity.MyRequestSteps;
 import com.steps.serenity.SideMenuSteps;
 import com.steps.serenity.ViewVacantionsSteps;
 import com.tools.VacationResultModel;
+import com.tools.VerifyIfAColumnContainsASpecificValue;
 import com.tools.VerifyNewRequestInRequests;
 
 import helpers.Constants;
@@ -40,6 +42,9 @@ public class MyRequestTest {
 	@Steps
 	public ViewVacantionsSteps vacantionsSteps;
 	
+	@Steps
+	public VerifyIfAColumnContainsASpecificValue verifyIfAColumnContainsASpecificValue;
+	
 	
 	public VacationResultModel expectedData;
 	
@@ -51,16 +56,17 @@ public class MyRequestTest {
 		expectedData.setDaysNumber("1");
 		expectedData.setLastUpdated("Opris Tudor");
 		expectedData.setStatus("Withdrawn");
-		expectedData.setType("Maternity");
+		expectedData.setType("Holidayd");
 	}
 	
 	@Test
 	public void enterNewVacationRequest() {
 		loginAndEnterOnTheVacationTabSteps.login(Constants.USER_NAME, Constants.USER_PASSWORD);
-		sideMenuSteps.enterMyRequest();
 		vacantionsSteps.clickOnVacationType("Holiday");
 		vacantionsSteps.clickOnApply();
-		myRequestsSteps.verifyThatASpecificColumnContainsTerms("Holiday");
-		//verifyNewRequestInRequests.verifyListContainsEntry(grabbedList, expectedData);
+		
+		List<VacationResultModel> grabbedList = myRequestsSteps.verifyThatASpecificColumnContainsTerms();
+		verifyIfAColumnContainsASpecificValue.verifyIfTypeColumnHasASpecificValue(grabbedList, expectedData);
+	
 	}
 } 
