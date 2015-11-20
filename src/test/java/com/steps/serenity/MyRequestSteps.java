@@ -7,6 +7,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import com.pages.MyRequestPage;
 import com.tools.VacationResultModel;
+import com.tools.VerifyIfAColumnContainsASpecificValue;
 
 public class MyRequestSteps extends ScenarioSteps {
 
@@ -15,8 +16,9 @@ public class MyRequestSteps extends ScenarioSteps {
 	 */
 	private static final long serialVersionUID = 5882515009397365249L;
 	
-	//TODO use access modifiers
-	MyRequestPage myRequestPage;
+	
+	public MyRequestPage myRequestPage;
+	public VerifyIfAColumnContainsASpecificValue verifyIfAColumnContainsASpecificValue;
 
 	@Step
 	public void selectHolidayCheckbox() {
@@ -31,7 +33,6 @@ public class MyRequestSteps extends ScenarioSteps {
 	public void verifyThatTypeIsCorrect(String terms, String column) {
 		myRequestPage.verifyThatTypeIsCorrect(terms, column);
 		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
-			// myRequestPage.verifyThatTypeIsCorrect(terms);
 			goToNextPage();
 			myRequestPage.verifyThatTypeIsCorrect(terms, column);
 		}
@@ -44,7 +45,7 @@ public class MyRequestSteps extends ScenarioSteps {
 
 	@Step
 	//TODO use correct verb for action 'check =/= grab'
-	public List<VacationResultModel> checkThatRowContainsTerms() {
+	public List<VacationResultModel> verifyThatRowContainsTerms() {
 		// myRequestPage.checkThatRowContainsTerms(terms);
 		return myRequestPage.grabResultsModelList();
 
@@ -54,5 +55,17 @@ public class MyRequestSteps extends ScenarioSteps {
 	public void goToNextPage() {
 		myRequestPage.clickNextPageButton();
 	}
+
+	public void verifyThatASpecificColumnContainsTerms(String columnData) {
+		List<VacationResultModel> grabbedList = myRequestPage.grabResultsModelList();
+		verifyIfAColumnContainsASpecificValue.verifyIfTypeColumnHasASpecificValue(grabbedList, columnData);
+		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
+			goToNextPage();
+			verifyIfAColumnContainsASpecificValue.verifyIfTypeColumnHasASpecificValue(grabbedList, columnData);
+		}
+		
+	}
+
+	 
 
 }
