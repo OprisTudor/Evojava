@@ -1,5 +1,7 @@
 package com.features.search;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import com.steps.serenity.LoginSteps;
 import com.steps.serenity.SideMenuSteps;
 import com.steps.serenity.TrackSteps;
+import com.tools.VacationResultModel;
+import com.tools.VacationTrackerResultModel;
 
 import helpers.Constants;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -33,11 +37,16 @@ public class TrackTest {
 	public void verifiyIfThetrackPageWorks() {
 		endUserVacationSteps.login(Constants.PM_USERNAME, Constants.PM_PASSWORD);
 		sideMenuSteps.enterVacatioTracker();
-	    trackSteps.selectStartDate();
-	    trackSteps.setDate(16, "Nov", 2015);
-		trackSteps.selectEndDate();
-		trackSteps.setDate(18, "Nov", 2015);
+//	    trackSteps.selectStartDate();
+//	    trackSteps.setDate(16, "Nov", 2015);
+//		trackSteps.selectEndDate();
+//		trackSteps.setDate(18, "Nov", 2015);
+		trackSteps.selectFromBuildingsDropDown("MainBuilding");
+		//trackSteps.selectFromDepartmentsDropDown("Eboot");
 		trackSteps.clickApplyButton();
+		List<VacationTrackerResultModel> grabbedList = trackSteps.grabResultModelList();
+		trackSteps.checkIfTheBuildingColumnMatchesTheExpectedColumn(grabbedList, "Main Building");
+		
 	/*
 		trackSteps.selectStartDate();
 		trackSteps.selectEndDate();
@@ -51,8 +60,7 @@ public class TrackTest {
 		trackSteps.clickApplyButton();
 		trackSteps.selectDepartmentsDropDown();
     */
-		trackSteps.selectFromBuildingsDropDown("MainBuilding");
-		trackSteps.selectFromDepartmentsDropDown("Eboot");
+		
 
 	}
 }
