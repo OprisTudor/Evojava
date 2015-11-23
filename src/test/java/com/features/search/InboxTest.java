@@ -13,6 +13,8 @@ import com.steps.serenity.InboxSteps;
 import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
 import com.steps.serenity.SideMenuSteps;
 
+import helpers.Constants;
+
 @RunWith(SerenityRunner.class)
 public class InboxTest extends ScenarioSteps {
 	// TODO the test class does not extend ScenarioSteps. remove unused extends
@@ -30,7 +32,7 @@ public class InboxTest extends ScenarioSteps {
 	@Test
 	// TODO change to meaningful test name
 	public void enterEveryTabOnSidePage() {
-		endUserSteps.loginAsDM();
+		endUserSteps.login(Constants.DM_USERNAME, Constants.DM_PASSWORD);
 		sideMenuSteps.enterInbox();
 		inboxSteps.enterFirstRow();
 		inboxSteps.enterApprove();

@@ -22,15 +22,6 @@ public class VerifyNewRequestInRequests extends ScenarioSteps{
 			boolean vallidType = vacationResultModel.getType().contains(expectedData.getType());
 			boolean vallidStatus = vacationResultModel.getStatus().contains(expectedData.getStatus());
 			boolean vallidLastUpdated = vacationResultModel.getLastUpdated().contains(expectedData.getLastUpdated());
-			//TODO remove syso from final method
-			System.out.println("--- New Entry ------");
-			System.out.println("vallidEndDate: " + vallidEndDate);
-			System.out.println("vallidStartDate: " + vallidStartDate);
-			System.out.println("vallidDaysNumber: " + vallidDaysNumber);
-			System.out.println("vallidType: " + vallidType);
-			System.out.println("vallidStatus: " + vallidStatus);
-			System.out.println("vallidLastUpdated: " + vallidLastUpdated);
-			
 			if(vallidEndDate && vallidStartDate && vallidDaysNumber && vallidType && vallidStatus && vallidLastUpdated){
 				isPresent = true;
 				break theFor;

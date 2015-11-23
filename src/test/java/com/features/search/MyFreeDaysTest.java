@@ -8,6 +8,9 @@ import com.steps.serenity.InboxSteps;
 import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
 import com.steps.serenity.MyFreeDaysSteps;
 import com.steps.serenity.ViewVacantionsSteps;
+
+import helpers.Constants;
+
 import com.steps.serenity.SideMenuSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -36,7 +39,7 @@ public class MyFreeDaysTest extends ScenarioSteps {
 	@Test
 	//TODO change to meaningful test name
 	public void enterEveryTabOnSidePage() {
-		endUserSteps.loginAsDM();
+		endUserSteps.login(Constants.DM_USERNAME, Constants.DM_PASSWORD);
 		sideMenuSteps.enterMyFreeDays();
 		myFreeDaysSteps.clickOnYears("2016");
 		//TODO remove waitABit - use waitUntilVisible for methods that need wait

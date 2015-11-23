@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import com.steps.serenity.InboxSteps;
 import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
 import com.steps.serenity.ViewVacantionsSteps;
+
+import helpers.Constants;
+
 import com.steps.serenity.SideMenuSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -35,7 +38,7 @@ public class ViewVacantionsTest extends ScenarioSteps {
 	@Test
 	//TODO provide test with a more meaningful name
 	public void enterEveryTabOnSidePage() {
-		endUserSteps.loginAsDM();
+		endUserSteps.login(Constants.DM_USERNAME, Constants.DM_PASSWORD);
 		sideMenuSteps.enterViewVacations();
 		newVacantionsSteps.clickOnVacationType("Holiday");
 		newVacantionsSteps.clickOnVacationType("Sick Leave");
