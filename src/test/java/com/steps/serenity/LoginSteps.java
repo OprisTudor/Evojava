@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 
 //TODO rename Step class to more appropriate name like LoginSteps
-public class LoginAndEnterOnTheVacationTabSteps extends ScenarioSteps {
+public class LoginSteps extends ScenarioSteps {
 
 	/**
 	 * 

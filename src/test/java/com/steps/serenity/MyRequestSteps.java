@@ -8,7 +8,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import com.pages.MyRequestPage;
 import com.tools.VacationResultModel;
-import com.tools.VerifyIfAColumnContainsASpecificValue;
+
 
 public class MyRequestSteps extends ScenarioSteps {
 
@@ -18,8 +18,7 @@ public class MyRequestSteps extends ScenarioSteps {
 	private static final long serialVersionUID = 5882515009397365249L;
 
 	public MyRequestPage myRequestPage;
-	public VerifyIfAColumnContainsASpecificValue verifyIfAColumnContainsASpecificValue;
-
+	
 	@Step
 	public void selectHolidayCheckbox() {
 		myRequestPage.inputHoliday();
@@ -34,20 +33,13 @@ public class MyRequestSteps extends ScenarioSteps {
 		myRequestPage.clickSpecialVacationCheckbox();
 	}
 
-	@Step
-	// TODO use correct verb for action 'check =/= grab'
-	public List<VacationResultModel> verifyThatRowContainsTerms() {
-		// myRequestPage.checkThatRowContainsTerms(terms);
-		return myRequestPage.grabResultsModelList();
-
-	}
 
 	@Step
 	public void goToNextPage() {
 		myRequestPage.clickNextPageButton();
 	}
 
-	public List<VacationResultModel> verifyThatASpecificColumnContainsTerms() {
+	public List<VacationResultModel> grabResultModelList() {
 		List<VacationResultModel> finalResultList = new ArrayList<VacationResultModel>();
 
 		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
