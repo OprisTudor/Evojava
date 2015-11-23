@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
+import com.steps.serenity.LoginSteps;
 import com.steps.serenity.NewVacationRequestSteps;
 import com.steps.serenity.SideMenuSteps;
 
@@ -19,22 +19,23 @@ public class NewVacationRequestTest {
 	public WebDriver webdriver;
 	
 	@Steps
-	public LoginAndEnterOnTheVacationTabSteps authentication;
+	public LoginSteps authenticationStep;
 	//TODO use full names. Also use key words like Steps for each
 	@Steps
 	public SideMenuSteps sideMenuSteps;
+	
 	@Steps
 	public NewVacationRequestSteps newVacationRequestSteps;
 	
 	@Test
 	//TODO change to meaningful test name
 	public void enterNewVacationRequest() {
-		authentication.login("roxanabot1","automation");
+		authenticationStep.login("roxanabot1","automation");
 		sideMenuSteps.enterNewRequest();
 		newVacationRequestSteps.selectStartDate();
-		newVacationRequestSteps.setDate(7,"Aug",2017);
+		newVacationRequestSteps.setRequestDates(7,"Aug",2017);
 		newVacationRequestSteps.selectEndDate();
-		newVacationRequestSteps.setDate(25,"Aug",2017);
+		newVacationRequestSteps.setRequestDates(25,"Aug",2017);
 		newVacationRequestSteps.selectVacationMaternityLeave("CIC", "4 months", "Kindergarden");
 		newVacationRequestSteps.chooseComment();
 		newVacationRequestSteps.writeComment("Please check my request ASAP");

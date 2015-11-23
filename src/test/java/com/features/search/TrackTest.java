@@ -4,10 +4,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
+import com.steps.serenity.LoginSteps;
 import com.steps.serenity.SideMenuSteps;
 import com.steps.serenity.TrackSteps;
 
+import helpers.Constants;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -19,7 +20,7 @@ public class TrackTest {
 	private WebDriver webdriver;
 
 	@Steps
-	private LoginAndEnterOnTheVacationTabSteps endUserVacationSteps;
+	private LoginSteps endUserVacationSteps;
 	
 	@Steps
 	private SideMenuSteps sideMenuSteps;
@@ -28,9 +29,9 @@ public class TrackTest {
 	private TrackSteps trackSteps;
 
 	@Test
-	// TODO change test name to a more meaningful test name - done
-	public void testingTrackPage() {
-		endUserVacationSteps.loginAsPM();
+	// TODO change test name to a more meaningful test name
+	public void verifiyIfThetrackPageWorks() {
+		endUserVacationSteps.login(Constants.PM_USERNAME, Constants.PM_PASSWORD);
 		sideMenuSteps.enterVacatioTracker();
 	    trackSteps.selectStartDate();
 	    trackSteps.setDate(16, "Nov", 2015);

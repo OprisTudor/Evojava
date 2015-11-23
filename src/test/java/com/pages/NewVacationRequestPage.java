@@ -75,37 +75,40 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "[style*='display: block'] .dp_daypicker td:not([class*='disabled'])")
 	private List<WebElementFacade> dayList;
 
-	//TODO split this method into more atomic methods (one for each field)
-	public void setDate(int day, String month, int year) {
-		// click twice on title to open year view
+	
+	public void setNewRequestDates(int day, String month, int year) {
 		title.click();
 		title.click();
+		selectYear(year);
+		selectMonth(month);
+		selectDay(day);
+	}
 
-		// select year
+	public void selectYear(int year){
 		for (WebElementFacade i : yearList)
 			if (i.getText().contentEquals(Integer.toString(year))) {
 				i.click();
 				break;
 			}
+	}
 
-		// select month
+	public void selectMonth(String month){
 		for (WebElementFacade i : monthList)
 			if (i.getText().contentEquals(month)) {
 				i.click();
 				break;
 			}
+	}
 
-		// select day
+	public void selectDay(int day){
 		for (WebElementFacade i : dayList)
 			if (i.getText().contentEquals(Integer.toString(day))) {
 				i.click();
 				break;
 			}
-		
-		waitABit(3000);
-
 	}
-
+		
+		
 	//TODO add waitUntilVisible for all element actions (methods)
 	public void selectStartDate() {
 		initialDate.click();

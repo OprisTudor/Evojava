@@ -5,7 +5,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
-@DefaultUrl("http://172.22.4.88:9090/")
 public class SideMenuPage extends PageObject {
 
 	//TODO rename mappings with more suggestive names

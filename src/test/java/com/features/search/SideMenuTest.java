@@ -1,32 +1,32 @@
 package com.features.search;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.ScenarioSteps;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
+import com.steps.serenity.LoginSteps;
 import com.steps.serenity.SideMenuSteps;
 
+import helpers.Constants;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
+
 @RunWith(SerenityRunner.class)
-public class SideMenuTest extends ScenarioSteps{
+public class SideMenuTest{
 	//TODO the test class does not extend ScenarioSteps. remove unused extends
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
 
     @Steps
-    public LoginAndEnterOnTheVacationTabSteps endUserSteps;
+    public LoginSteps endUserSteps;
     @Steps
     public SideMenuSteps sideMenuSteps;
     
     @Test
     //TODO change to meaningful test name
     public void enterEveryTabOnSidePage() {
-       endUserSteps.loginAsDM();
+    	endUserSteps.login(Constants.DM_USERNAME, Constants.DM_PASSWORD);
        sideMenuSteps.enterInbox();
        sideMenuSteps.enterNewRequest();
        sideMenuSteps.enterMyRequest();

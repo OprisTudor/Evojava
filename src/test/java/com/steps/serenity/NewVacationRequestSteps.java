@@ -22,8 +22,8 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void setDate(int day, String month, int year) {
-		newVacationRequestPage.setDate(day, month, year);
+	public void setRequestDates(int day, String month, int year) {
+		newVacationRequestPage.setNewRequestDates(day, month, year);
 	}
 
 	@Step
@@ -86,4 +86,6 @@ public class NewVacationRequestSteps extends ScenarioSteps {
 	public void verifyMessage(String message) {
 		newVacationRequestPage.verifyMessage(message);
 	}
+
+	
 }
