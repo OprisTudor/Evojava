@@ -9,48 +9,48 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 
 public class TrackSteps extends ScenarioSteps {
-	// TODO use access modifiers
-	TrackPage trackPage;
+	// TODO use access modifiers - done
+	private TrackPage trackPage;
 
-	// TODO use more suggestive names for method naming
+	// TODO use more suggestive names for method naming - done
 	@Step
-	public void enters() {
-		trackPage.clickOnTrack();
+	public void openTrackPage() {
+		trackPage.clickTrackButton();
 	}
 
 	@Step
-	public void selectInitialDate() {
-		trackPage.clickOnInitialDate();
+	public void selectStartDate() {
+		trackPage.clickStartDate();
 	}
 
 	@Step
-	public void selectSecondDate() {
-		trackPage.clickOnSecondDate();
+	public void selectEndDate() {
+		trackPage.clickEndDate();
 	}
 
 	@Step
 	public void selectBuildingsDropDown() {
-		trackPage.clickOnBuildingsDropDown();
+		trackPage.clickBuildingsDropDown();
 	}
 
 	@Step
 	public void selectDepartmentsDropDown() {
-		trackPage.clickOnDepartmentsDropDown();
+		trackPage.clickDepartmentsDropDown();
 	}
 
 	@Step
-	public void checkAllBuildings() {
-		trackPage.clickCheckAllBuildings();
+	public void clickAllBuildingsCheckbox() {
+		trackPage.clickAllBuildingsCheckbox();
 	}
 
 	@Step
-	public void checkAllDepartments() {
-		trackPage.clickCheckAllDepartments();
+	public void clickAllDepartmentsCheckbox() {
+		trackPage.clickAllDepartmentsCheckbox();
 	}
 
 	@Step
-	public void clickOnApplyButton() {
-		trackPage.clickOnApplyButton();
+	public void clickApplyButton() {
+		trackPage.clickApplyButton();
 	}
 
 	@Step
@@ -62,4 +62,12 @@ public class TrackSteps extends ScenarioSteps {
 	public void selectFromBuildingsDropDown(String buildingName) {
 		trackPage.selectFromBuildingsDropDown(buildingName);
 	}
+		
+	@Step
+    public void setDate (int day, String month, int year) {
+        trackPage.setDate(day, month, year);
+		
+        
+
+}
 }
