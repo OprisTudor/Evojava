@@ -5,28 +5,25 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import com.steps.serenity.InboxSteps;
-import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
+import com.steps.serenity.LoginSteps;
 import com.steps.serenity.MyFreeDaysSteps;
-import com.steps.serenity.ViewVacantionsSteps;
-
-import helpers.Constants;
-
 import com.steps.serenity.SideMenuSteps;
 
+import helpers.Constants;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 
 @RunWith(SerenityRunner.class)
-public class MyFreeDaysTest extends ScenarioSteps {
+public class MyFreeDaysTest {
 	// TODO the test class does not extend ScenarioSteps. remove unused extends
 	
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
 	@Steps
-	public LoginAndEnterOnTheVacationTabSteps endUserSteps;
+	public LoginSteps endUserSteps;
 	@Steps
 	public InboxSteps inboxSteps;
 
@@ -43,9 +40,7 @@ public class MyFreeDaysTest extends ScenarioSteps {
 		sideMenuSteps.enterMyFreeDays();
 		myFreeDaysSteps.clickOnYears("2016");
 		//TODO remove waitABit - use waitUntilVisible for methods that need wait
-		waitABit(3000);
 		myFreeDaysSteps.clickOnBack();
-		waitABit(3000);
 	}
 
 }

@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.serenity.LoginAndEnterOnTheVacationTabSteps;
+import com.steps.serenity.LoginSteps;
 import com.steps.serenity.NewVacationRequestSteps;
 import com.steps.serenity.SideMenuSteps;
 
@@ -19,7 +19,7 @@ public class NewVacationRequestTest {
 	public WebDriver webdriver;
 	
 	@Steps
-	public LoginAndEnterOnTheVacationTabSteps authenticationStep;
+	public LoginSteps authenticationStep;
 	//TODO use full names. Also use key words like Steps for each
 	@Steps
 	public SideMenuSteps sideMenuSteps;

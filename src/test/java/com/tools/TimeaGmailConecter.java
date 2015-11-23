@@ -8,7 +8,7 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
 
-public class TudorGmailConecter {
+public class TimeaGmailConecter {
 
    public static void check(String host, String storeType, String user,
       String password) 
@@ -61,10 +61,10 @@ public class TudorGmailConecter {
 
    public static void main(String[] args) {
 
-      String host = "pop.gmail.com";// change accordingly
+      String host ="pop.gmail.com";// change accordingly
       String mailStoreType = "pop3";
-      String username = "tudor.opris.silvan@gmail.com";// change accordingly
-      String password = "marmota1989";// change accordingly
+      String username = "timeasebestyen87@gmail.com";// change accordingly
+      String password = "timea.1987";// change accordingly
 
       check(host, mailStoreType, username, password);
 
