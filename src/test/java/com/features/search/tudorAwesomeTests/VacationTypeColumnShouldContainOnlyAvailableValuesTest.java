@@ -19,12 +19,11 @@ import helpers.Constants;
 
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.junit.annotations.UseTestDataFrom;
-import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
+import net.serenitybdd.junit.runners.SerenityRunner;
 
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom("resources/VacationTypes.csv")
-public class FilteringByVacationTypeOnlyTheSelectedTypeShouldAppear {
+@RunWith(SerenityRunner.class)
+
+public class VacationTypeColumnShouldContainOnlyAvailableValuesTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -46,15 +45,13 @@ public class FilteringByVacationTypeOnlyTheSelectedTypeShouldAppear {
 	@Steps
 	public CheckIfAColumnContainsASpecificValueSteps checkIfTypeColumnHasASpecificValueSteps;
 
-	public String vacationType;
+	public String vacationTypes = "Holiday,Vacation Without Payment,Special Vacation,Sick Leave,Maternity Leave";
 
 	@Test
 	public void filteringByVacationTypeOnlyTheSelectedTypeShouldAppear() {
 		loginSteps.login(Constants.USER_NAME, Constants.USER_PASSWORD);
-		vacantionsSteps.clickOnVacationType(vacationType);
-		vacantionsSteps.clickOnApply();
 		List<VacationResultModel> grabbedList = myRequestsSteps.grabResultModelListOfAllPages();
-		checkIfTypeColumnHasASpecificValueSteps.checkIfTypeColumnHasASpecificValue(grabbedList, vacationType);
+		checkIfTypeColumnHasASpecificValueSteps.checkIfTypeColumnHasValidData(grabbedList, vacationTypes);
 
 	}
 }

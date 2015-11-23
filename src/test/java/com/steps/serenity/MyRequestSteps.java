@@ -33,13 +33,19 @@ public class MyRequestSteps extends ScenarioSteps {
 		myRequestPage.clickSpecialVacationCheckbox();
 	}
 
+	@Step
+	// TODO use correct verb for action 'check =/= grab'
+	public List<VacationResultModel> grabResultModelListOfOnePage() {
+		return myRequestPage.grabResultsModelList();
+
+	}
 
 	@Step
 	public void goToNextPage() {
 		myRequestPage.clickNextPageButton();
 	}
 
-	public List<VacationResultModel> grabResultModelList() {
+	public List<VacationResultModel> grabResultModelListOfAllPages() {
 		List<VacationResultModel> finalResultList = new ArrayList<VacationResultModel>();
 
 		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {

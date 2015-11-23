@@ -47,9 +47,6 @@ public class MyRequestPage extends PageObject {
 	@FindBy(css = ".aui-paginator-next-link")
 	private WebElementFacade nextPage;
 
-	// @FindBy(css = ".aui-searchcontainer")
-	// private WebElement searchListContainer;
-
 	public void inputHoliday() {
 		holiday.click();
 	}
