@@ -1,5 +1,6 @@
 package com.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -8,6 +9,9 @@ import net.thucydides.core.pages.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import com.tools.VacationResultModel;
+import com.tools.VacationTrackerResultModel;
 
 public class TrackPage extends PageObject {
 
@@ -43,7 +47,7 @@ public class TrackPage extends PageObject {
 	@FindBy(css = "div#buildings div.mutliSelect")
 	private WebElementFacade buildingContainer;
 	@FindBy(css = "[style*='display: block'] .dp_caption")
-	private WebElementFacade title;
+	private WebElementFacade titleButton;
 	
 	@FindBy(css = "[style*='display: block'] .dp_yearpicker td")
 	private List<WebElementFacade> datePickerYearList;
@@ -53,6 +57,10 @@ public class TrackPage extends PageObject {
 
 	@FindBy(css = "[style*='display: block'] .dp_daypicker td:not([class*='disabled'])")
 	private List<WebElementFacade> datePickerDayList;
+	
+	@FindBy(css = ".aui-paginator-next-link")
+	private WebElementFacade nextPageButton;
+
 
 	public void clickTrackButton() {
 		trackButton.click();
@@ -61,9 +69,10 @@ public class TrackPage extends PageObject {
 
 	public void setDate(int day, String month, int year) {
 		// click twice on title to open year view
-		title.click();
+		element(titleButton).waitUntilVisible();
+		titleButton.click();
 		waitABit(2000);
-		title.click();
+		titleButton.click();
 		waitABit(2000);
 		
 
@@ -87,7 +96,7 @@ public class TrackPage extends PageObject {
 				i.click();
 				break;
 			}
-		waitABit(3000);
+		waitABit(2000);
 	}
 
 	public void clickStartDate() {
@@ -120,6 +129,13 @@ public class TrackPage extends PageObject {
 	public void clickApplyButton() {
 		applyButton.click();
 	}
+	
+	public void clickNextPageButton(){
+		nextPageButton.click();
+		
+
+	
+	}
 
 	public void selectFromDepartmentsDropDown(String departmentName) {
 		element(departmentsDropdown).waitUntilVisible();
@@ -133,7 +149,7 @@ public class TrackPage extends PageObject {
 			if (departmentElement.getText().contains(departmentName)) {
 				departmentElement.click();
 				// TODO clean waitABit and use waitUntilVisible
-				waitABit(3000);
+				waitABit(2000);
 				
 				break;
 			}
@@ -153,7 +169,7 @@ public class TrackPage extends PageObject {
 			if (buildingElement.getText().contains(buildingName)) {
 				buildingElement.click();
 				// TODO clean waitABit and use waitUntilVisible
-				waitABit(4000);
+				waitABit(2000);
 		
 				break;
 
@@ -161,4 +177,57 @@ public class TrackPage extends PageObject {
 
 		}
 	}
+	public int getNumberOfPages() {
+		String number;
+		int pages = 0;
+		List<WebElement> rows = getDriver().findElements(By.cssSelector(".aui-paginator-total"));
+		for (WebElement row : rows) {
+			number = row.getText().toString().split("of ")[1].replace(')', ' ').split(" ")[0];
+			pages = Integer.parseInt(number);
+
+		}
+		return pages;
+	}
+	public List<VacationTrackerResultModel> grabResultsModelList() {
+		WebElement searchListContainer = getDriver().findElement(By.cssSelector("div.results-grid"));
+		element(searchListContainer).waitUntilVisible();
+		List<WebElement> entryList = searchListContainer
+				.findElements(By.cssSelector("tr.results-row:not(.lfr-template)"));
+
+		List<VacationTrackerResultModel> resultList = new ArrayList<VacationTrackerResultModel>();
+
+		for (WebElement webElement : entryList) {
+			VacationTrackerResultModel entryNow = new VacationTrackerResultModel();
+
+			String employeeName = webElement.findElement(By.cssSelector("td[class*='employee-name']")).getText();
+
+			
+			String startDate = webElement.findElement(By.cssSelector("td[class*='start.date']")).getText();
+
+			String endDate = webElement.findElement(By.cssSelector("td[class*='end.date']")).getText();
+			
+			String building = webElement.findElement(By.cssSelector("td[class*='building']")).getText();
+			
+			String department = webElement.findElement(By.cssSelector("td[class*='department']")).getText();
+			
+
+			String type = webElement.findElement(By.cssSelector("td[class*='type']")).getText();
+
+			String status = webElement.findElement(By.cssSelector("td[class*='status']")).getText();
+
+			entryNow.setStartDate(startDate);
+			entryNow.setEndDate(endDate);
+			entryNow.setEmployeeName(employeeName);
+			entryNow.setBuilding(building);
+			entryNow.setDepartment(department);
+			entryNow.setType(type);
+			entryNow.setStatus(status);
+
+			resultList.add(entryNow);
+
+		}
+
+		return resultList;
+	}
+
 }
