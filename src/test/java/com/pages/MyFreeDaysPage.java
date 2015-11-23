@@ -29,7 +29,6 @@ public class MyFreeDaysPage extends PageObject {
 	public void clickOnYears(String name) {
 		for (WebElementFacade item : years) {
 			if (item.getText().contains(name)) {
-				System.out.println("Am dat click");
 				item.click();
 			}
 		}
