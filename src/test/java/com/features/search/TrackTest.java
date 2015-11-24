@@ -37,10 +37,10 @@ public class TrackTest {
 	public void verifiyIfThetrackPageWorks() {
 		endUserVacationSteps.login(Constants.PM_USERNAME, Constants.PM_PASSWORD);
 		sideMenuSteps.enterVacatioTracker();
-//	    trackSteps.selectStartDate();
-//	    trackSteps.setDate(16, "Nov", 2015);
-//		trackSteps.selectEndDate();
-//		trackSteps.setDate(18, "Nov", 2015);
+	    trackSteps.selectStartDate();
+        trackSteps.setDate(16, "Nov", 2015);
+		trackSteps.selectEndDate();
+		trackSteps.setDate(18, "Nov", 2015);
 		trackSteps.selectFromBuildingsDropDown("MainBuilding");
 		//trackSteps.selectFromDepartmentsDropDown("Eboot");
 		trackSteps.clickApplyButton();
