@@ -14,13 +14,13 @@ public class ViewVacantionsPage extends PageObject {
 	@FindBy(css = "a[href*='_menuItem=view-vacations']")
 	private WebElementFacade viewVacations;
 
-	@FindBy(css = "div[class='aui-column column-three aui-column-first '] label")
+	@FindBy(css = "div[class*='aui-column column-three aui-column-first '] label")
 	private List<WebElementFacade> vacationTypeColumn;
 
-	@FindBy(css = "div[class='aui-column column-three column-center '] label")
+	@FindBy(css = "div[class*='aui-column column-three column-center '] label")
 	private List<WebElementFacade> daysNumberColumn;
 
-	@FindBy(css = "div[class='aui-column column-three column-center aui-column-last'] label")
+	@FindBy(css = "div[class*='aui-column column-three column-center aui-column-last'] label")
 	private List<WebElementFacade> vacationStatusColumn;
 
 	@FindBy(id = "_evovacation_WAR_EvoVacationportlet_inactiveUsersCheckbox")
@@ -51,7 +51,7 @@ public class ViewVacantionsPage extends PageObject {
 	public void clickOnDaysNumber(String name) {
 		for (WebElementFacade item : daysNumberColumn) {
 			System.out.println(item.getText());
-			if (item.getText().contains(name)) {
+			if (name.contains(item.getText())) {
 				System.out.println("Am dat click");
 				item.click();
 			}

@@ -9,7 +9,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 import com.pages.MyRequestPage;
 import com.tools.VacationResultModel;
 
-
 public class MyRequestSteps extends ScenarioSteps {
 
 	/**
@@ -18,7 +17,7 @@ public class MyRequestSteps extends ScenarioSteps {
 	private static final long serialVersionUID = 5882515009397365249L;
 
 	public MyRequestPage myRequestPage;
-	
+
 	@Step
 	public void selectHolidayCheckbox() {
 		myRequestPage.inputHoliday();
@@ -33,19 +32,25 @@ public class MyRequestSteps extends ScenarioSteps {
 		myRequestPage.clickSpecialVacationCheckbox();
 	}
 
+	@Step
+	// TODO use correct verb for action 'check =/= grab'
+	public List<VacationResultModel> grabResultModelListOfOnePage() {
+		return myRequestPage.grabResultsModelList();
+
+	}
 
 	@Step
 	public void goToNextPage() {
 		myRequestPage.clickNextPageButton();
 	}
 
-	public List<VacationResultModel> grabResultModelList() {
+	public List<VacationResultModel> grabResultModelListOfAllPages() {
 		List<VacationResultModel> finalResultList = new ArrayList<VacationResultModel>();
-
+		List<VacationResultModel> partialList = myRequestPage.grabResultsModelList();
 		for (int i = 1; i < myRequestPage.getNumberOfPages(); i++) {
-			List<VacationResultModel> partialList = myRequestPage.grabResultsModelList();
-			finalResultList.addAll(partialList);
 			goToNextPage();
+			partialList = myRequestPage.grabResultsModelList();
+			finalResultList.addAll(partialList);
 		}
 		return finalResultList;
 	}

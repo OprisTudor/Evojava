@@ -53,7 +53,7 @@ public class FilteringByVacationTypeOnlyTheSelectedTypeShouldAppear {
 		loginSteps.login(Constants.USER_NAME, Constants.USER_PASSWORD);
 		vacantionsSteps.clickOnVacationType(vacationType);
 		vacantionsSteps.clickOnApply();
-		List<VacationResultModel> grabbedList = myRequestsSteps.grabResultModelList();
+		List<VacationResultModel> grabbedList = myRequestsSteps.grabResultModelListOfAllPages();
 		checkIfTypeColumnHasASpecificValueSteps.checkIfTypeColumnHasASpecificValue(grabbedList, vacationType);
 
 	}
