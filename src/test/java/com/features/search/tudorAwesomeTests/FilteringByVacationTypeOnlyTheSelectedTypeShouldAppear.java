@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import com.steps.serenity.CheckIfAColumnContainsASpecificValueSteps;
 import com.steps.serenity.LoginSteps;
 import com.steps.serenity.MyRequestSteps;
 import com.steps.serenity.SideMenuSteps;
 import com.steps.serenity.ViewVacantionsSteps;
-import com.tools.CheckIfAColumnContainsASpecificValueSteps;
 import com.tools.VacationResultModel;
 
 import com.tools.VerifyNewRequestInRequests;

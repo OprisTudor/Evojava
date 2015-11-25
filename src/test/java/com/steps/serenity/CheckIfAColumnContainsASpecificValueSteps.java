@@ -1,9 +1,11 @@
-package com.tools;
+package com.steps.serenity;
 
 import java.util.List;
 
 import org.jruby.RubyProcess.Sys;
 import org.junit.Assert;
+
+import com.tools.VacationResultModel;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -75,4 +77,5 @@ public class CheckIfAColumnContainsASpecificValueSteps extends ScenarioSteps {
 
 		return valid;
 	}
+	
 }
